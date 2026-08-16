@@ -3,14 +3,52 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="A complete Laravel-based School Management & Online Examination System — Admin, Teacher, Student and Parent panels, real-time, no page reloads.">
 
-        <title>School Management & Online Examination System</title>
+        <title>School Management & Online Examination System | Laravel Expert</title>
+        <meta name="description" content="Complete School Management & Online Examination System built on Laravel — Admin, Teacher, Student and Parent panels. Live online MCQ exams with auto-evaluation, instant results, and printable marksheets. Real-time, no page reloads.">
+        <meta name="keywords" content="school management system, school management software, online examination system, online exam software, school ERP software, student information system, student result management system, online mcq exam software, exam management software, question bank software, school admission software, class attendance software, teacher management software, parent portal software, school management system india, laravel school management system, school software development, custom school erp development, school management system for coaching institute, online test software for schools, student marksheet software, result declaration software, school management system with student login, school management system with parent login">
+        <meta name="geo.region" content="IN">
+        <meta name="geo.placename" content="India">
+        <meta name="author" content="Nirbhay Dhaked - LaravelExpert.in">
+        <meta name="robots" content="index, follow">
+        <link rel="canonical" href="{{ url('/') }}">
+
+        <!-- Open Graph / Facebook, WhatsApp, LinkedIn previews -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url('/') }}">
+        <meta property="og:title" content="School Management & Online Examination System">
+        <meta property="og:description" content="Complete School Management & Online Examination System — Admin, Teacher, Student and Parent panels. Live online MCQ exams with auto-evaluation, instant results, and printable marksheets.">
+        <meta property="og:site_name" content="School Management System">
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="School Management & Online Examination System">
+        <meta name="twitter:description" content="Complete School Management & Online Examination System — live online MCQ exams, auto-evaluation, instant results, printable marksheets.">
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "School Management & Online Examination System",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web",
+            "description": "Complete School Management & Online Examination System with Admin, Teacher, Student and Parent panels. Live online MCQ exams with auto-evaluation, instant results, and printable marksheets.",
+            "offers": {
+                "@type": "Offer",
+                "priceCurrency": "INR"
+            },
+            "author": {
+                "@type": "Organization",
+                "name": "LaravelExpert.in",
+                "url": "https://laravelexpert.in"
+            }
+        }
+        </script>
     </head>
     <body class="antialiased font-sans bg-gray-50 text-gray-900">
 
@@ -34,6 +72,7 @@
                     </a>
                     @if (Route::has('login'))
                         <a href="{{ route('login') }}" wire:navigate class="text-sm font-medium text-gray-600 hover:text-gray-900">Log in</a>
+                        <a href="{{ route('login') }}" wire:navigate class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700">Try Demo</a>
                     @endif
                 </nav>
             </div>
@@ -43,8 +82,12 @@
         <section class="relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-white"></div>
             <div class="relative max-w-6xl mx-auto px-6 py-20 text-center">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700 mb-5">
-                    Built on Laravel 11 + Livewire — real-time, no page reloads
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700 mb-5">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-500 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
+                    </span>
+                    Live Online Exams · Instant Auto-Evaluation · Zero Paperwork
                 </span>
                 <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">
                     School Management &amp; Online<br class="hidden sm:block"> Examination System
@@ -55,6 +98,15 @@
                     printable marksheet. Everything updates live, with no page refreshes.
                 </p>
                 <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    @if (Route::has('login'))
+                        <a
+                            href="{{ route('login') }}" wire:navigate
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700 shadow-sm"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+                            Try Live Demo
+                        </a>
+                    @endif
                     <a
                         href="https://wa.me/{{ $whatsappNumber }}?text={{ $whatsappMessage }}"
                         target="_blank" rel="noopener"
@@ -71,6 +123,7 @@
                         Email Us
                     </a>
                 </div>
+                <p class="mt-3 text-xs text-gray-400">Demo login credentials are shown right on the login page — no signup needed.</p>
                 <p class="mt-4 text-sm text-gray-500">
                     📞 +91 {{ substr($whatsappNumber, 2, 5) }} {{ substr($whatsappNumber, 7) }}
                     &nbsp;·&nbsp;
@@ -169,7 +222,9 @@
         <!-- Footer -->
         <footer class="border-t border-gray-200 py-6">
             <p class="text-center text-xs text-gray-400">
-                &copy; {{ date('Y') }} School Management System. Built with Laravel &amp; Livewire.
+                &copy; {{ date('Y') }} School Management System ·
+                Developed by <a href="https://laravelexpert.in" target="_blank" rel="noopener" class="text-gray-500 hover:text-indigo-600 underline">laravelexpert.in</a>
+                — Nirbhay Dhaked
             </p>
         </footer>
 
