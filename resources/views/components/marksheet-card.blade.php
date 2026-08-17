@@ -21,38 +21,40 @@
         <p><span class="text-gray-500">Roll No:</span> <span class="font-medium text-gray-900">{{ $student->roll_number }}</span></p>
     </div>
 
-    <table class="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-        <thead class="bg-gray-50">
-            <tr>
-                <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Subject</th>
-                <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Exam</th>
-                <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Marks</th>
-                <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">%</th>
-                <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Grade</th>
-                <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Result</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-100">
-            @forelse ($rows as $row)
+    <div class="overflow-x-auto border border-gray-200 rounded-lg">
+        <table class="w-full text-sm">
+            <thead class="bg-gray-50">
                 <tr>
-                    <td class="px-4 py-2.5 text-gray-900">{{ $row['subject'] }}</td>
-                    <td class="px-4 py-2.5 text-gray-600">{{ $row['exam_title'] }}</td>
-                    <td class="px-4 py-2.5 text-gray-600">{{ $row['obtained'] }} / {{ $row['total'] }}</td>
-                    <td class="px-4 py-2.5 text-gray-600">{{ $row['percentage'] }}%</td>
-                    <td class="px-4 py-2.5 text-gray-600">{{ $row['grade'] }}</td>
-                    <td class="px-4 py-2.5">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium {{ $row['passed'] ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700' }}">
-                            {{ $row['passed'] ? 'Pass' : 'Fail' }}
-                        </span>
-                    </td>
+                    <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Subject</th>
+                    <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Exam</th>
+                    <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Marks</th>
+                    <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">%</th>
+                    <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Grade</th>
+                    <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Result</th>
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="6" class="px-4 py-8 text-center text-gray-500">No declared results yet.</td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+                @forelse ($rows as $row)
+                    <tr>
+                        <td class="px-4 py-2.5 text-gray-900 whitespace-nowrap">{{ $row['subject'] }}</td>
+                        <td class="px-4 py-2.5 text-gray-600 whitespace-nowrap">{{ $row['exam_title'] }}</td>
+                        <td class="px-4 py-2.5 text-gray-600 whitespace-nowrap">{{ $row['obtained'] }} / {{ $row['total'] }}</td>
+                        <td class="px-4 py-2.5 text-gray-600 whitespace-nowrap">{{ $row['percentage'] }}%</td>
+                        <td class="px-4 py-2.5 text-gray-600 whitespace-nowrap">{{ $row['grade'] }}</td>
+                        <td class="px-4 py-2.5 whitespace-nowrap">
+                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium {{ $row['passed'] ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700' }}">
+                                {{ $row['passed'] ? 'Pass' : 'Fail' }}
+                            </span>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6" class="px-4 py-8 text-center text-gray-500">No declared results yet.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 
     @if (count($rows) > 0)
         <div class="mt-6 flex items-center justify-between border-t border-gray-200 pt-4">

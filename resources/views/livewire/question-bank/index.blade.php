@@ -295,6 +295,7 @@ new #[Layout('components.layouts.panel')] class extends Component
     </div>
 
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
             <thead class="bg-gray-50">
                 <tr>
@@ -341,6 +342,7 @@ new #[Layout('components.layouts.panel')] class extends Component
                 @endforelse
             </tbody>
         </table>
+        </div>
 
         @if ($questions->hasPages())
             <div class="px-6 py-4 border-t border-gray-100">
@@ -359,7 +361,7 @@ new #[Layout('components.layouts.panel')] class extends Component
             </h2>
 
             <form wire:submit="save" class="space-y-4">
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Class</label>
                         <select wire:model.live="schoolClassId" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
@@ -388,7 +390,7 @@ new #[Layout('components.layouts.panel')] class extends Component
                     @error('questionText') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Marks</label>
                         <input type="number" wire:model="marks" min="1" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">

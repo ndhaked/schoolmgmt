@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ $title ?? config('app.name', 'School Management System') }}</title>
+        <title>{{ $title ?? config('app.name', 'SkoolMS') }}</title>
+        <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
@@ -21,9 +22,9 @@
                 class="print:hidden fixed inset-y-0 left-0 z-30 w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-auto flex flex-col"
                 :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
             >
-                <div class="h-16 flex items-center gap-2 px-6 border-b border-gray-200 shrink-0">
-                    <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
-                    <span class="text-base font-semibold tracking-tight text-gray-900">{{ config('app.name') }}</span>
+                <div class="h-16 flex items-center gap-2.5 px-6 border-b border-gray-200 shrink-0">
+                    <x-logo-mark class="h-11 w-11" />
+                    <span class="text-base font-semibold tracking-tight text-gray-900 leading-tight">{{ config('app.name') }}</span>
                 </div>
 
                 <nav class="flex-1 overflow-y-auto px-3 py-4 space-y-1 text-sm">

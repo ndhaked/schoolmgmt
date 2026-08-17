@@ -91,6 +91,7 @@ new #[Layout('components.layouts.panel')] class extends Component
     </div>
 
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
             <thead class="bg-gray-50">
                 <tr>
@@ -132,6 +133,7 @@ new #[Layout('components.layouts.panel')] class extends Component
                 @endforelse
             </tbody>
         </table>
+        </div>
     </div>
 
     <!-- Modal -->
@@ -159,7 +161,7 @@ new #[Layout('components.layouts.panel')] class extends Component
                     @error('name') <p class="mt-1 text-xs text-red-600">{{ $message }}</p> @enderror
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
                         <input type="date" wire:model="start_date"

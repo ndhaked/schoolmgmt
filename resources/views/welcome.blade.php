@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>School Management & Online Examination System | Laravel Expert</title>
+        <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
         <meta name="description" content="Complete School Management & Online Examination System built on Laravel — Admin, Teacher, Student and Parent panels. Live online MCQ exams with auto-evaluation, instant results, and printable marksheets. Real-time, no page reloads.">
         <meta name="keywords" content="school management system, school management software, online examination system, online exam software, school ERP software, student information system, student result management system, online mcq exam software, exam management software, question bank software, school admission software, class attendance software, teacher management software, parent portal software, school management system india, laravel school management system, school software development, custom school erp development, school management system for coaching institute, online test software for schools, student marksheet software, result declaration software, school management system with student login, school management system with parent login">
         <meta name="geo.region" content="IN">
@@ -18,7 +19,7 @@
         <meta property="og:url" content="{{ url('/') }}">
         <meta property="og:title" content="School Management & Online Examination System">
         <meta property="og:description" content="Complete School Management & Online Examination System — Admin, Teacher, Student and Parent panels. Live online MCQ exams with auto-evaluation, instant results, and printable marksheets.">
-        <meta property="og:site_name" content="School Management System">
+        <meta property="og:site_name" content="SkoolMS">
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image">
@@ -54,16 +55,16 @@
 
         @php
             $whatsappNumber = '918209990511';
-            $whatsappMessage = rawurlencode("Hi, I'm interested in the School Management System software.");
+            $whatsappMessage = rawurlencode("Hi, I'm interested in the SkoolMS software.");
             $email = 'nirbhaydhaked@gmail.com';
         @endphp
 
         <!-- Header -->
         <header class="bg-white border-b border-gray-200">
             <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
-                    <span class="font-semibold text-gray-900">School Management System</span>
+                <div class="flex items-center gap-2.5">
+                    <x-logo-mark class="h-11 w-11" />
+                    <span class="font-semibold text-gray-900">SkoolMS</span>
                 </div>
                 <nav class="flex items-center gap-4">
                     <a href="https://wa.me/{{ $whatsappNumber }}?text={{ $whatsappMessage }}" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-emerald-600">
@@ -116,7 +117,7 @@
                         Chat on WhatsApp
                     </a>
                     <a
-                        href="mailto:{{ $email }}?subject={{ rawurlencode('Enquiry: School Management System') }}"
+                        href="mailto:{{ $email }}?subject={{ rawurlencode('Enquiry: SkoolMS') }}"
                         class="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-700 text-sm font-semibold rounded-lg border border-gray-300 hover:bg-gray-50 shadow-sm"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
@@ -211,7 +212,7 @@
                     +91 82099 90511
                 </a>
                 <a
-                    href="mailto:{{ $email }}?subject={{ rawurlencode('Enquiry: School Management System') }}"
+                    href="mailto:{{ $email }}?subject={{ rawurlencode('Enquiry: SkoolMS') }}"
                     class="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-700 text-sm font-semibold rounded-lg border border-gray-300 hover:bg-gray-50 shadow-sm"
                 >
                     {{ $email }}
@@ -222,7 +223,7 @@
         <!-- Footer -->
         <footer class="border-t border-gray-200 py-6">
             <p class="text-center text-xs text-gray-400">
-                &copy; {{ date('Y') }} School Management System ·
+                &copy; {{ date('Y') }} SkoolMS ·
                 Developed by <a href="https://laravelexpert.in" target="_blank" rel="noopener" class="text-gray-500 hover:text-indigo-600 underline">laravelexpert.in</a>
                 — Nirbhay Dhaked
             </p>

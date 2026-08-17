@@ -60,9 +60,9 @@ class DemoDataSeeder extends Seeder
         // --- Students ---
         $students = [];
         foreach ([
-            ['name' => 'Aarav Sharma', 'email' => 'student1@school.test', 'roll' => '1'],
-            ['name' => 'Diya Patel', 'email' => 'student2@school.test', 'roll' => '2'],
-            ['name' => 'Kabir Singh', 'email' => 'student3@school.test', 'roll' => '3'],
+            ['name' => 'Aarav Sharma', 'email' => 'student1@school.test', 'roll' => '1', 'phone' => '9876500001'],
+            ['name' => 'Diya Patel', 'email' => 'student2@school.test', 'roll' => '2', 'phone' => '9876500002'],
+            ['name' => 'Kabir Singh', 'email' => 'student3@school.test', 'roll' => '3', 'phone' => '9876500003'],
         ] as $i => $data) {
             $studentUser = User::updateOrCreate(
                 ['email' => $data['email']],
@@ -77,6 +77,7 @@ class DemoDataSeeder extends Seeder
                     'school_class_id' => $class10->id,
                     'section_id' => $sectionA->id,
                     'roll_number' => $data['roll'],
+                    'guardian_phone' => $data['phone'],
                 ]
             );
         }
@@ -87,7 +88,7 @@ class DemoDataSeeder extends Seeder
             ['name' => 'Rohit Sharma', 'password' => Hash::make('password'), 'email_verified_at' => now()]
         );
         $parentUser->assignRole('parent');
-        $parentGuardian = ParentGuardian::updateOrCreate(['user_id' => $parentUser->id], []);
+        $parentGuardian = ParentGuardian::updateOrCreate(['user_id' => $parentUser->id], ['phone' => '9876512345']);
         $parentGuardian->students()->syncWithoutDetaching([$students[0]->id]);
 
         // --- Question Bank: Mathematics ---

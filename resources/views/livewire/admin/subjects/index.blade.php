@@ -82,6 +82,7 @@ new #[Layout('components.layouts.panel')] class extends Component
     </div>
 
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
             <thead class="bg-gray-50">
                 <tr>
@@ -121,6 +122,7 @@ new #[Layout('components.layouts.panel')] class extends Component
                 @endforelse
             </tbody>
         </table>
+        </div>
     </div>
 
     <!-- Modal -->

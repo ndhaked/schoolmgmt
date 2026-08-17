@@ -189,6 +189,7 @@ new #[Layout('components.layouts.panel')] class extends Component
     </div>
 
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
             <thead class="bg-gray-50">
                 <tr>
@@ -197,6 +198,7 @@ new #[Layout('components.layouts.panel')] class extends Component
                     <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Roll No.</th>
                     <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Admission No.</th>
                     <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Email</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Phone</th>
                     <th class="px-6 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
                 </tr>
             </thead>
@@ -207,8 +209,17 @@ new #[Layout('components.layouts.panel')] class extends Component
                         <td class="px-6 py-4 text-gray-600">{{ $student->schoolClass->name }} - {{ $student->section->name }}</td>
                         <td class="px-6 py-4 text-gray-600">{{ $student->roll_number }}</td>
                         <td class="px-6 py-4 text-gray-600">{{ $student->admission_no }}</td>
-                        <td class="px-6 py-4 text-gray-600">{{ $student->user->email }}</td>
-                        <td class="px-6 py-4 text-right space-x-3">
+                        <td class="px-6 py-4">
+                            <a href="mailto:{{ $student->user->email }}" class="text-indigo-600 hover:text-indigo-800 hover:underline">{{ $student->user->email }}</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            @if ($student->guardian_phone)
+                                <a href="tel:{{ $student->guardian_phone }}" class="text-indigo-600 hover:text-indigo-800 hover:underline whitespace-nowrap">{{ $student->guardian_phone }}</a>
+                            @else
+                                <span class="text-gray-400 text-xs">—</span>
+                            @endif
+                        </td>
+                        <td class="px-6 py-4 text-right space-x-3 whitespace-nowrap">
                             <button wire:click="edit({{ $student->id }})" class="text-indigo-600 hover:text-indigo-800 font-medium">Edit</button>
                             <button
                                 wire:click="delete({{ $student->id }})"
@@ -219,13 +230,14 @@ new #[Layout('components.layouts.panel')] class extends Component
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="px-6 py-10 text-center text-gray-500">
+                        <td colspan="7" class="px-6 py-10 text-center text-gray-500">
                             No students yet. Click "Add Student" to create one.
                         </td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
+        </div>
     </div>
 
     <!-- Modal -->
@@ -238,7 +250,7 @@ new #[Layout('components.layouts.panel')] class extends Component
             </h2>
 
             <form wire:submit="save" class="space-y-4">
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                         <input type="text" wire:model="name" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
@@ -251,7 +263,7 @@ new #[Layout('components.layouts.panel')] class extends Component
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Class</label>
                         <select wire:model.live="schoolClassId" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
@@ -274,7 +286,7 @@ new #[Layout('components.layouts.panel')] class extends Component
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Admission No.</label>
                         <input type="text" wire:model="admissionNo" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
@@ -287,7 +299,7 @@ new #[Layout('components.layouts.panel')] class extends Component
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
                         <input type="date" wire:model="dateOfBirth" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
@@ -305,7 +317,7 @@ new #[Layout('components.layouts.panel')] class extends Component
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Guardian Name</label>
                         <input type="text" wire:model="guardianName" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">

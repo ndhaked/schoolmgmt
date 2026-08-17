@@ -172,11 +172,13 @@ new #[Layout('components.layouts.panel')] class extends Component
     </div>
 
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
             <thead class="bg-gray-50">
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Name</th>
                     <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Email</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Phone</th>
                     <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Children</th>
                     <th class="px-6 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
                 </tr>
@@ -185,7 +187,16 @@ new #[Layout('components.layouts.panel')] class extends Component
                 @forelse ($parents as $parent)
                     <tr wire:key="parent-{{ $parent->id }}">
                         <td class="px-6 py-4 font-medium text-gray-900">{{ $parent->user->name }}</td>
-                        <td class="px-6 py-4 text-gray-600">{{ $parent->user->email }}</td>
+                        <td class="px-6 py-4">
+                            <a href="mailto:{{ $parent->user->email }}" class="text-indigo-600 hover:text-indigo-800 hover:underline">{{ $parent->user->email }}</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            @if ($parent->phone)
+                                <a href="tel:{{ $parent->phone }}" class="text-indigo-600 hover:text-indigo-800 hover:underline whitespace-nowrap">{{ $parent->phone }}</a>
+                            @else
+                                <span class="text-gray-400 text-xs">—</span>
+                            @endif
+                        </td>
                         <td class="px-6 py-4 text-gray-600">
                             @forelse ($parent->students as $child)
                                 <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700 mr-1 mb-1">
@@ -206,13 +217,14 @@ new #[Layout('components.layouts.panel')] class extends Component
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="px-6 py-10 text-center text-gray-500">
+                        <td colspan="5" class="px-6 py-10 text-center text-gray-500">
                             No parents yet. Click "Add Parent" to create one.
                         </td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
+        </div>
     </div>
 
     <!-- Modal -->
@@ -225,7 +237,7 @@ new #[Layout('components.layouts.panel')] class extends Component
             </h2>
 
             <form wire:submit="save" class="space-y-4">
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                         <input type="text" wire:model="name" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
@@ -238,7 +250,7 @@ new #[Layout('components.layouts.panel')] class extends Component
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
                         <input type="text" wire:model="phone" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
